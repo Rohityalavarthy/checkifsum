@@ -1,0 +1,19 @@
+def check_sum(numbers, n):
+    sums1, sums2 = [], []
+    numbers1 = numbers[:len(numbers) // 2]
+    numbers2 = numbers[len(numbers) // 2:]
+
+    for sums, numbers_ in ((sums1, numbers1), (sums2, numbers2)):
+        for number in numbers_:
+            for sum_ in sums[:]:
+                sums.append(sum_ + number)
+
+            sums.append(number)
+
+    for sum_ in sums1:
+        if n - sum_ in sums2:
+            return True
+
+    return False
+    
+print(check_sum([2824,1956,3683,2429,2903,3591,4949,122,138,189,156,126,172,122], 11681))
